@@ -127,28 +127,27 @@ deleteOrder(1, [{id:1, name: "Phone"}, {id:2, name:"Laptop"}])
 
 // // ____________________________________________________________________________
 
-// // 6.Գրել ֆունկցիա, որը ստանում է productId եւ products զանգվածը։
-// // Ֆունկցիան պետք է ստուգի, արդյոք ապրանքը պահեստում կա, եւ վերադարձնի “In
-// // stock” կամ reject, եթե սպառված է։
+function check(products, productId){
+    return new Promise((resolve, reject)=>{
+        let product = products.find(p=> p.id===productId )
+        if(!product){
+            return reject("Product chka")
+        }if(product.stock>0){
+            return resolve("Product in stock")
+        } return reject("Sold out")
+        
+    })
+}
 
-// // function check(products, productId){
-// //     return new Promise((resolve, reject)=>{
-// //        let find = products.find(p=> p.id===productId)
-// //        if(find){
-// //            return resolve("In stock")
-// //        }return reject("Sold out")
-// //     })
-// // }
+let list = [
+ {id:100, prod:"Jacket", stock:5},
+ {id:101, prod:"Jeans", stock:0},
+ {id:102, prod:"Shirt", stock:2}
+]
 
-// // let list = [
-// //  {id:100, prod:"Jacket"},
-// //  {id:101, prod:"Jeans"},
-// //  {id:102, prod:"Shirt"}
-// // ]
-
-// // check(list, 100)
-// // .then((data)=>{console.log(data)})
-// // .catch((err)=>{console.log(err)})
+check(list, 1014)
+.then((data)=>{console.log(data)})
+.catch((err)=>{console.log(err)})
 
 // // ____________________________________________________________________________
 
@@ -247,4 +246,5 @@ deleteOrder(1, [{id:1, name: "Phone"}, {id:2, name:"Laptop"}])
 // .then((data)=>{console.log(data)})
 
 // .catch((err)=>{console.log(err)})
+
 
