@@ -82,19 +82,23 @@
 // // Ֆունկցիան պետք է ջնջի տվյալ պատվերը եւ վերադարձնի message Promise-ի միջոցով։
 // // Reject, եթե պատվեր չկա։
 
-// // function deleteOrder(orderId, orders){
-// //     return new Promise((resolve, reject)=>{
-// //         if(orders.length>0){
-// //             for(let i in orders){
-// //                 delete orders[i]
-// //             }
-// //             return resolve("patvernery jnjvecin")
-// //         }return reject("patver chka")
-// //     })
-// // }
-// // deleteOrder(1, [{name: "Phone"}])
-// // .then((data)=>{console.log(data)})
-// // .catch((err)=>{console.log(err)})
+function deleteOrder(orderId, orders) {
+  return new Promise((resolve, reject) => {
+    if (orders.length > 0) {
+      for (let i in orders) {
+        if (orders[i].id === orderId) {
+          orders.splice(i, 1)
+          return resolve("patvery jnjvecav")
+        }
+      }
+      return reject("patver chka") 
+    }
+    return reject("order-y datarka")
+  })
+}
+deleteOrder(1, [{id:1, name: "Phone"}, {id:2, name:"Laptop"}])
+.then((data)=>{console.log(data)})
+.catch((err)=>{console.log(err)})
 
 // // ____________________________________________________________________________
 
@@ -241,4 +245,5 @@
 
 // myFunc(listUsers, 1)
 // .then((data)=>{console.log(data)})
+
 // .catch((err)=>{console.log(err)})
