@@ -88,7 +88,7 @@ function deleteOrder(orderId, orders) {
       for (let i in orders) {
         if (orders[i].id === orderId) {
           orders.splice(i, 1)
-          return resolve("patvery jnjvecav")
+          return resolve("patvery jnjvec")
         }
       }
       return reject("patver chka") 
@@ -247,3 +247,4 @@ deleteOrder(1, [{id:1, name: "Phone"}, {id:2, name:"Laptop"}])
 // .then((data)=>{console.log(data)})
 
 // .catch((err)=>{console.log(err)})
+
